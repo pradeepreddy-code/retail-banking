@@ -26,11 +26,10 @@
     </distributionManagement>
 
     <properties>
-        <java.version>11</java.version>
         <sonar.projectKey>ohbus_retail-banking</sonar.projectKey>
         <sonar.organization>ohbus</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
+
 
     <dependencies>
         <!-- All your dependencies remain unchanged -->
