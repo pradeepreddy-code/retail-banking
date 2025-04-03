@@ -4,9 +4,8 @@ LABEL maintainer="Pradeep Reddy Nadagouni pradeep@example.com"
 LABEL artifact="retail-banking"
 LABEL name="Retail Banking"
 
-ARG JAR_FILE=target/retail.banking-1.0.jar
-COPY target/retail.banking-1.0.jar app.jar  # Use the exact JAR file path
+COPY target/retail.banking-1.0.jar app.jar  # Use exact path to your JAR file
 
-EXPOSE 9090
+EXPOSE 9090  # Expose the port
 
 ENTRYPOINT [ "java", "-jar", "/app.jar" ]
