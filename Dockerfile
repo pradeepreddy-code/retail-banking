@@ -6,6 +6,6 @@ LABEL name="Retail Banking"
 
 COPY ./target/retail.banking-1.0.jar /app.jar  # Explicitly reference the relative path
 
-EXPOSE 9090  # Expose the port
+EXPOSE 9090  
 
 ENTRYPOINT [ "java", "-jar", "/app.jar" ]
