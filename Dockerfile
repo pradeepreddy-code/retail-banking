@@ -4,7 +4,7 @@ LABEL maintainer="Pradeep Reddy Nadagouni pradeep@example.com"
 LABEL artifact="retail-banking"
 LABEL name="Retail Banking"
 
-COPY target/retail.banking-1.0.jar app.jar  # Use exact path to your JAR file
+COPY target/retail.banking-1.0.jar app.jar  # Directly specify the JAR file
 
 EXPOSE 9090  # Expose the port
 
