@@ -1,11 +1,6 @@
-FROM openjdk:11-jre-slim
-
-LABEL maintainer="Pradeep Reddy Nadagouni pradeep@example.com"
-LABEL artifact="retail-banking"
-LABEL name="Retail Banking"
-
-COPY target/retail.banking-1.0.jar /app.jar  # Explicitly reference the relative path
-
-EXPOSE 9090  
-
-ENTRYPOINT [ "java", "-jar", "/app.jar" ]
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/app.jar app.jar
+COPY wait-for-it.sh wait-for-it.sh
+RUN chmod +x wait-for-it.sh
+ENTRYPOINT ["./wait-for-it.sh", "retail-mysql:3306", "--timeout=60", "--strict", "--", "java", "-jar", "app.jar"]
