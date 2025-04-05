@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: retail-mysql
+  template:
+    metadata:
+      labels:
+        app: retail-mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "Mysecure@123"
+            - name: MYSQL_DATABASE
+              value: "demo"  # You can define your database here
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc  # PersistentVolumeClaim reference
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi  # You can adjust the size based on your needs
+  storageClassName: standard  # Adjust this based on your Kubernetes setup

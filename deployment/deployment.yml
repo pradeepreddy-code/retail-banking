@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-banking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: retail-banking
+  template:
+    metadata:
+      labels:
+        app: retail-banking
+    spec:
+      containers:
+        - name: retail-banking
+          image: pradeep326/retail-banking:latest
+          ports:
+            - containerPort: 9090
